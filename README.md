@@ -9,3 +9,36 @@ This repository has branches for each of the videos in the course. You can use t
 ## Branches
 The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
 Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `master` branch holds the final state of the code when in the course.
+
+## Running the App
+
+Before running the App, ensure the migrations are created and applied.
+To verify the migrations, use the following commands
+
+python manage.py showmigrations
+python manage.py makemigrations
+python manage.py migrate
+
+These commands ensure the necessary migration scripts are created in the migrations folder in the corresponding apps. This project has only one app wisdompets.
+
+To browse through the schema, use SQLiteBrowser. Once its downloaded and installed, use Open Database option to select the db.sqlite3 file from the wisdompets root project folder.
+
+Load the data into the tables using the management command thats created under the Adoptions app
+
+python manage.py load_pet_data
+
+Use the following command to create a super user for managing (Create/Update/Delete) the Pet/Vaccine data through the admin console
+python manage.py createsuperuser
+
+On windows, use python manage.py runserver
+On Linux/Mac, python3 manage.py runserver
+
+## Additional Useful Information and Commands
+
+Querying the database interactively using the Django shell.
+
+Run python manage.py shell to open up an interactive python shell
+
+from adoptions.models import Pet
+
+pets = Pet.objects.all() // this will return all the rows in the Pets table. Similar to findAll() in Spring Data JPA

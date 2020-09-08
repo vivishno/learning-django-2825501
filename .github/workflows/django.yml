@@ -41,7 +41,17 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-            
+     
+    - uses: azure/docker-login@v1
+      with:
+        login-server: webappdeploygithubactions.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    
+    - run: |
+        docker build . -t webappdeploygithubactions.azurecr.io/djangowebapp:${{ github.sha }}
+        docker push webappdeploygithubactions.azurecr.io/djangowebapp:${{ github.sha }}         
+    
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
       with:
@@ -51,7 +61,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        images: 'webappdeploygithubactions.azurecr.io/djangowebapp:${{ github.sha }}'
         startup-command:  python3 wisdompets/manage.py runserver
         
   # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples

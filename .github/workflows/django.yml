@@ -36,7 +36,12 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install django==3.0.3
-        
+    
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+            
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
       with:
@@ -46,7 +51,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         startup-command:  python3 wisdompets/manage.py runserver
         

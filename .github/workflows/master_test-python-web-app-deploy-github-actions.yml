@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'test-python-web-app-deploy-github-actions'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7ead163f7d36419c9f0d82af5bdea031 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2ab1e725749b49bf917442a088924233 }}

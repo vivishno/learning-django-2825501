@@ -14,7 +14,7 @@ echo Starting Gunicorn
 
 exec gunicorn wisdompets.wsgi:application \
     --name Django-Sample-App \
-    --bind 0.0.0.0:8000 \
+    --bind 0.0.0.0:80 \
     --workers 3 \
     --log-level=info \
     --log-file=/opt/logs/gunicorn.log \

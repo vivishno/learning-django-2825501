@@ -11,7 +11,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose ports
-EXPOSE 8000
+EXPOSE 80
 
 # default command to execute    
 #CMD exec gunicorn wisdompets.wsgi:application --bind 0.0.0.0:8000 --workers 3

@@ -26,7 +26,7 @@ SECRET_KEY = 'z#*i00+q9skyc6lgt3_tqjzq_peyw!9@-iyp^pg!0s7un5mff$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ gethostname(), gethostbyname(""), "https://python-django-web-app.azurewebsites.net/"] 
+ALLOWED_HOSTS = [ gethostname(), gethostbyname(""), 'https://python-django-web-app.azurewebsites.net'] 
 
 # Application definition
 

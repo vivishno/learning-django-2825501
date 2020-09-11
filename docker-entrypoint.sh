@@ -1,7 +1,7 @@
 #!/bin/bash
 python manage.py migrate                  # Apply database migrations
 python manage.py load_pet_data            # Load the data into db using management command
-python manage.py collectstatic --noinput  # Collect static files
+#python manage.py collectstatic --noinput  # Collect static files
 
 # Prepare log files and start outputting logs to stdout
 mkdir -p "/opt/logs" && touch "/opt/logs/gunicorn.log"

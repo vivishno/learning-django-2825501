@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from socket import gethostname, gethostbyname 
 import os
 from socket import gethostname, gethostbyname 
 
@@ -26,7 +27,8 @@ SECRET_KEY = 'z#*i00+q9skyc6lgt3_tqjzq_peyw!9@-iyp^pg!0s7un5mff$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ gethostname(), gethostbyname(""), 'python-django-web-app.azurewebsites.net'] 
+
+ALLOWED_HOSTS = [ gethostname(), gethostbyname(""), '*'] 
 
 # Application definition
 

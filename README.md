@@ -16,7 +16,9 @@ Before running the App, ensure the migrations are created and applied.
 To verify the migrations, use the following commands
 
 python manage.py showmigrations
+
 python manage.py makemigrations
+
 python manage.py migrate
 
 These commands ensure the necessary migration scripts are created in the migrations folder in the corresponding apps. This project has only one app wisdompets.

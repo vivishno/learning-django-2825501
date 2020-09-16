@@ -31,7 +31,7 @@ jobs:
               "identity": {
                   "type": "UserAssigned",
                   "userAssignedIdentities": {
-                      "/subscriptions/f9b6b78c-2720-4293-9fc7-2c38fcebb2c6/resourceGroups/aibResourceGroupLin/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aibIdentitySIGLin": {}
+                      "/subscriptions/8311baa7-d15a-484b-a61a-952ac8688353/resourceGroups/sai-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AIB-Managed-Identity-EastUS": {}
                   }
               },
               "properties": {
@@ -84,14 +84,14 @@ jobs:
                   "distribute": [
                       {
                           "type": "SharedImage",
-                          "galleryImageId": "/subscriptions/f9b6b78c-2720-4293-9fc7-2c38fcebb2c6/resourceGroups/aibResourceGroupLin/providers/Microsoft.Compute/galleries/sharedImageGalleryLin/images/imgdefnlin",
+                          "galleryImageId": "/subscriptions/8311baa7-d15a-484b-a61a-952ac8688353/resourcegroups/sai-rg/providers/Microsoft.Compute/galleries/sharedimagegallery/images/aib-image",
                           "runOutputName": "",
                           "artifactTags": {
                               "source": "azureVmImageBuilder",
                               "baseosimg": "ubuntu1804"
                           },
                           "replicationRegions": [
-                              "eastus"
+                              "westus"
                           ]
                       }
                   ]
@@ -101,16 +101,15 @@ jobs:
     - name: Login via Az module
       uses: azure/login@v1.1
       with:
-        creds: ${{secrets.AZURE_CREDENTIALS}}      
+        creds: ${{secrets.AZURE_CREDENTIALS_PERSONAL}}      
     
-    #u ses action for AIB to create image
     - name: Azure Image Builder Action
       id: aib
       uses: ./
       with:
-        location: 'westus'
-        resource-group-name: 'aibResourceGroupLin'
-        managed-identity: 'aibIdentitySIGLin'
+        location: 'eastus'
+        resource-group-name: 'sai-rg'
+        managed-identity: 'AIB-Managed-Identity-EastUS'
         source-os-type: 'linux'
         source-image: Canonical:UbuntuServer:18.04-DAILY-LTS:latest
         customizer-source: '${{ GITHUB.WORKSPACE }}/workflow-artifacts/homework'

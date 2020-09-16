@@ -15,6 +15,7 @@ jobs:
         mkdir worflow-artifacts/
         echo "echo Installing World... " > $GITHUB_WORKSPACE/workflow-artifacts/install-world.sh 
         echo "echo Installing Universe... " > $GITHUB_WORKSPACE/workflow-artifacts/install-universe.sh
+        chmod -R 755 workflow-artifacts
     
     - name: Login via Az module
       uses: azure/login@v1

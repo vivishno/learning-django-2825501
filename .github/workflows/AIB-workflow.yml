@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ master ]
+    branches: [ master, aib-action ]
   pull_request:
     branches: [ aib-action ]
     

@@ -10,8 +10,7 @@ jobs:
     
     - name: Create Sample Workflow Artifacts
       run: |
-        echo "$GITHUB_WORKFLOW"
-        cd  "$GITHUB_WORKFLOW"
+        cd  "$GITHUB_WORKSPACE"
         mkdir worflow-artifacts/        
         echo "echo Installing World... " > $GITHUB_WORKSPACE/workflow-artifacts/install-world.sh 
         echo "echo Installing Universe... " > $GITHUB_WORKSPACE/workflow-artifacts/install-universe.sh

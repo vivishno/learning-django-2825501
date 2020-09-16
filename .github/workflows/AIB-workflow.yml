@@ -1,0 +1,35 @@
+on: push
+
+jobs:      
+  job1:
+    runs-on: ubuntu-latest
+    name: Create Custom Image
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Create Sample Workflow Artifacts
+      run: |
+        cd  "$GITHUB_WORKFLOW"
+        mkdir worflow-artifacts/        
+        echo "echo Installing World... " > $GITHUB_WORKSPACE/workflow-artifacts/install-world.sh 
+        echo "echo Installing Universe... " > $GITHUB_WORKSPACE/workflow-artifacts/install-universe.sh
+    
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    
+    - name: Build and Distribute Custom VM Image      
+      uses: azure/build-vm-image@v0
+      with:        
+        resource-group-name: 'dev-rg'
+        location: 'eastus2'
+        managed-identity: 'image-creation-identity'
+        source-os-type: 'linux'
+        source-image-type: 'PlatformImage'
+        source-image: Canonical:UbuntuServer:18.04-LTS:latest        
+        customizer-script: |
+          sudo mkdir /buildArtifacts
+          sudo cp -r /tmp/ /buildArtifacts/
+

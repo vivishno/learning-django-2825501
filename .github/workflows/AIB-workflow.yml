@@ -23,9 +23,9 @@ jobs:
     - name: Build and Distribute Custom VM Image      
       uses: azure/build-vm-image@v0
       with:        
-        resource-group-name: 'dev-rg'
-        location: 'eastus2'
-        managed-identity: 'image-creation-identity'
+        resource-group-name: 'sai-rg'
+        location: 'eastus'
+        managed-identity: 'AIB-Managed-Identity-EastUS'
         source-os-type: 'linux'
         source-image-type: 'PlatformImage'
         source-image: Canonical:UbuntuServer:18.04-LTS:latest        

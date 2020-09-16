@@ -21,7 +21,7 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     
     - name: Build and Distribute Custom VM Image      
-      uses: azure/build-vm-image@v0
+      uses: azure/build-vm-image@v1
       with:        
         resource-group-name: 'sai-rg'
         location: 'eastus'

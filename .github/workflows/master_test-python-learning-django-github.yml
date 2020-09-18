@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'test-python-learning-django-github'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2ee24362634542d19440fdd14c82c31b }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f724911c038a40aca1741585c4f9e268 }}

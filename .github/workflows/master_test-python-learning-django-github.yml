@@ -17,6 +17,11 @@ jobs:
       with:
         python-version: '3.8'
 
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+      
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
       with:
@@ -28,4 +33,4 @@ jobs:
       with:
         app-name: 'test-python-learning-django-github'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f724911c038a40aca1741585c4f9e268 }}
+        startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 --chdir /home/site/wwwroot/wisdompets wisdompets.wsgi:application'

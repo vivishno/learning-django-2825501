@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'myappviv'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9ead739354d24cb8b20b3c9b04f20b8f }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_af99ce7fe1fa47279020f614e24ea32c }}

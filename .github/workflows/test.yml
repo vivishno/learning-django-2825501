@@ -11,32 +11,32 @@ jobs:
   - uses: actions/checkout@master
   # setup python
   - name: Setup Python 3.7
-   uses: actions/setup-python@v1
-   with:
-    python-version: 3.7
+    uses: actions/setup-python@v1
+    with:
+     python-version: 3.7
   # install dependencies
   - name: python install
-   working-directory: wisdompets
-   run: |
-    sudo apt install python3.7-venv
-    python -m venv --copies antenv
-    source antenv/bin/activate
-    pip install setuptools
-    pip install -r 
+    working-directory: wisdompets
+    run: |
+     sudo apt install python3.7-venv
+     python -m venv --copies antenv
+     source antenv/bin/activate
+     pip install setuptools
+     pip install -r 
   # Azure login
   - uses: azure/login@v1
-   with:
-    creds: ${{ secrets.AZURE_CREDENTIALS_b750af21 }}
+    with:
+     creds: ${{ secrets.AZURE_CREDENTIALS }}
   - uses: azure/appservice-settings@v1
-   with:
-    app-name: test-python-learning-django-github
-    general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
+    with:
+     app-name: test-python-learning-django-github
+     general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
   # deploy web app
   - uses: azure/webapps-deploy@v1
-   with:
-    app-name: test-python-learning-django-github
-    package: wisdompets
+    with:
+     app-name: vivekapp1
+     package: wisdompets
   # Azure logout
   - name: logout
-   run: |
-    az logout
+    run: |
+     az logout

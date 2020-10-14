@@ -1,9 +1,6 @@
 name: Build and deploy Python app to Azure Web App - test-python-learning-django-github
 
-on:
-  push:
-    branches:
-      - master
+on: [pull_request]
 
 jobs:
   build-and-deploy:

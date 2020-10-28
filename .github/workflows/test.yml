@@ -29,14 +29,15 @@ jobs:
      creds: ${{ secrets.AZURE_CREDENTIALS }}
   - uses: azure/appservice-settings@v1
     with:
-     app-name: testdjangoempty
+     app-name: djangostcmd
      general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
   # deploy web app
   - uses: azure/webapps-deploy@v2
     with:
-     app-name: testdjangoempty
+     app-name: djangostcmd
      package: wisdompets
-     startup-command: ''
+     startup-command: gunicorn --bind=0.0.0.0 --timeout 600 wisdompets.wsgi:application
+
   # Azure logout
   - name: logout
     run: |

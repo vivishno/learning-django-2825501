@@ -29,13 +29,13 @@ jobs:
      creds: ${{ secrets.AZURE_CREDENTIALS }}
   - uses: azure/appservice-settings@v1
     with:
-     app-name: testdjangodeploy
+     app-name: testdjangoempty
      general-settings-json: '{"linuxFxVersion": "PYTHON|3.7"}' #'General configuration settings as Key Value pairs'
   # deploy web app
   - uses: azure/webapps-deploy@v1
     with:
-     app-name: testdjangodeploy
-     package: wisdompets
+     app-name: testdjangoempty
+     package: ''
   # Azure logout
   - name: logout
     run: |
